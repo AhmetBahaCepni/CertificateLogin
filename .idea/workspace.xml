@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0314f806-5dac-48b7-9c37-72d65af8d2e5" name="Changes" comment="lsad">
+      <change beforePath="$PROJECT_DIR$/electron/my-app" beforeDir="false" afterPath="$PROJECT_DIR$/electron/my-app" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron/my-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/my-app/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/electron/my-app/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/my-app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron/my-app/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/my-app/src/renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/electron/my-app/src/renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/Cl.items.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/pkcs11.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/common.obj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/common.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/dl.obj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/dl.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/src/main.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/win_delay_load_hook.obj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/obj/pkcs11/win_delay_load_hook.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.iobj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.iobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.ipdb" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.ipdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.node" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.node" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/Release/pkcs11.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/binding.sln" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/binding.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/config.gypi" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/config.gypi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/pkcs11.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/pkcs11.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/pkcs11.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/electron/node_modules/pkcs11js/build/pkcs11.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/electron/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AhmetBahaCepni&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:AhmetBahaCepni/CertificateLogin.git&quot;,
+    &quot;accountId&quot;: &quot;19ad486a-b7b1-4400-ab2a-f6b2d6581bac&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2uJ3GIJF5rCeVDEeCXzlFFMJmMy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.CertificateLoginApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ahmet.cepni/Desktop/SpringProjects/CertificateLogin/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.CertificateLoginApplication">
+    <configuration name="CertificateLoginApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-23" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="backend.com.abc.CertificateLogin.CertificateLoginApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/electron/my-app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="Spring Boot.CertificateLoginApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0314f806-5dac-48b7-9c37-72d65af8d2e5" name="Changes" comment="" />
+      <created>1741952752565</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741952752565</updated>
+      <workItem from="1741952753833" duration="1319000" />
+      <workItem from="1741955176827" duration="2511000" />
+      <workItem from="1741957729383" duration="393000" />
+      <workItem from="1741958249794" duration="626000" />
+      <workItem from="1741958890369" duration="806000" />
+      <workItem from="1742539589832" duration="4658000" />
+      <workItem from="1742558580754" duration="2507000" />
+      <workItem from="1742561127286" duration="951000" />
+    </task>
+    <task id="LOCAL-00001" summary="lsad">
+      <option name="closed" value="true" />
+      <created>1741958956343</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741958956343</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lsad" />
+    <option name="LAST_COMMIT_MESSAGE" value="lsad" />
+  </component>
+</project>

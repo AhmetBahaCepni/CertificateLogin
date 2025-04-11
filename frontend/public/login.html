@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Verification System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 24px;
+      text-align: center;
+    }
+    
+    p {
+      color: #666;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      font-size: 14px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    button:hover {
+      background-color: #3367d6;
+    }
+
+    .code-display {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f7ff;
+      border-radius: 6px;
+      border: 1px dashed #4285f4;
+      color: #333;
+    }
+    
+    .status {
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    
+    .status.waiting {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .status.success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .status.error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: #4285f4;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Screen -->
+  <div class="container" id="loginScreen">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <!-- Verification Screen -->
+  <div class="container hidden" id="verificationScreen">
+    <h1>Your Verification Code</h1>
+    <p>Use this code to verify your identity</p>
+    <div class="code-display" id="verificationCode">------</div>
+    <div class="status waiting" id="verificationStatus">
+      <div class="spinner"></div>
+      Waiting for verification...
+    </div>
+  </div>
+
+  <!-- Success Screen -->
+  <div class="container hidden" id="successScreen">
+    <h1>Welcome to Dashboard</h1>
+    <p>You have been successfully verified!</p>
+    <button id="logoutButton">Logout</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // DOM Elements
+      const loginScreen = document.getElementById('loginScreen');
+      const verificationScreen = document.getElementById('verificationScreen');
+      const successScreen = document.getElementById('successScreen');
+      const loginForm = document.getElementById('loginForm');
+      const verificationCodeElement = document.getElementById('verificationCode');
+      const verificationStatusElement = document.getElementById('verificationStatus');
+      const logoutButton = document.getElementById('logoutButton');
+
+      let verificationInterval;
+      
+      // Handle login form submission
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        try {
+          // Generate verification code using credentials
+          const code = await generateVerificationCode(username, password);
+          
+          if (code) {
+            // Show verification code
+            verificationCodeElement.textContent = code;
+            
+            // Hide login screen, show verification screen
+            loginScreen.classList.add('hidden');
+            verificationScreen.classList.remove('hidden');
+            
+            // Start checking verification status
+            startVerificationCheck();
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          alert('Login failed. Please check your credentials and try again.');
+        }
+      });
+      
+      // Generate verification code using credentials
+      async function generateVerificationCode(username, password) {
+        try {
+          // In a real application, you would call your backend API with the credentials
+          /* 
+          const response = await fetch('/api/auth/generate-code', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          });
+          
+          if (!response.ok) {
+            throw new Error('Failed to generate verification code');
+          }
+          
+          const data = await response.json();
+          return data.code;
+          */
+          
+          // For demonstration, we'll simulate the API response after a brief delay
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          return Math.floor(100000 + Math.random() * 900000).toString();
+        } catch (error) {
+          console.error('Error generating code:', error);
+          throw error;
+        }
+      }
+      
+      // Start checking verification status
+      function startVerificationCheck() {
+        // Clear any existing interval
+        if (verificationInterval) {
+          clearInterval(verificationInterval);
+        }
+        
+        // Check verification status every 2 seconds
+        verificationInterval = setInterval(async () => {
+          try {
+            const isVerified = await checkVerificationStatus();
+            
+            if (isVerified) {
+              // Stop checking
+              clearInterval(verificationInterval);
+              
+              // Show success screen
+              verificationScreen.classList.add('hidden');
+              successScreen.classList.remove('hidden');
+            }
+          } catch (error) {
+            console.error('Error checking verification status:', error);
+            verificationStatusElement.textContent = 'Error checking verification status';
+            verificationStatusElement.className = 'status error';
+            clearInterval(verificationInterval);
+          }
+        }, 2000);
+      }
+      
+      // Check verification status
+      async function checkVerificationStatus() {
+        try {
+          // In a real application, you would call your backend API
+          /*
+          const response = await fetch('/api/auth/is-verified');
+          if (!response.ok) {
+            throw new Error('Failed to check verification status');
+          }
+          const data = await response.json();
+          return data.verified;
+          */
+          
+          // For demonstration, simulate verification after a random number of checks
+          // This creates a 15% chance of verification on each check
+          return Math.random() < 0.15;
+        } catch (error) {
+          console.error('Error checking verification:', error);
+          throw error;
+        }
+      }
+      
+      // Handle logout button click
+      logoutButton.addEventListener('click', () => {
+        // Reset all screens and form
+        loginForm.reset();
+        verificationCodeElement.textContent = '------';
+        verificationStatusElement.innerHTML = '<div class="spinner"></div>Waiting for verification...';
+        verificationStatusElement.className = 'status waiting';
+        
+        // Clear verification interval
+        if (verificationInterval) {
+          clearInterval(verificationInterval);
+        }
+        
+        // Show login screen again
+        successScreen.classList.add('hidden');
+        verificationScreen.classList.add('hidden');
+        loginScreen.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

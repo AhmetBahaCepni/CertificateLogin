@@ -211,10 +211,8 @@
         }
       });
       
-      // Generate verification code using credentials
       async function generateVerificationCode(name, password) {
         try {
-          // In a real application, you would call your backend API with the credentials
            
           const response = await fetch('http://localhost:8080/api/auth/generate-code', {
             method: 'POST',

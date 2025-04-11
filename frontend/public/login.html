@@ -203,7 +203,7 @@
             verificationScreen.classList.remove('hidden');
             
             // Start checking verification status
-            startVerificationCheck();
+            startVerificationCheck(username, password);
           }
         } catch (error) {
           console.error('Login error:', error);
@@ -212,16 +212,16 @@
       });
       
       // Generate verification code using credentials
-      async function generateVerificationCode(username, password) {
+      async function generateVerificationCode(name, password) {
         try {
           // In a real application, you would call your backend API with the credentials
-          /* 
-          const response = await fetch('/api/auth/generate-code', {
+           
+          const response = await fetch('http://localhost:8080/api/auth/generate-code', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ name, password }),
           });
           
           if (!response.ok) {
@@ -229,12 +229,10 @@
           }
           
           const data = await response.json();
+          if (!data.code) {
+            throw new Error('No verification code received');
+          }
           return data.code;
-          */
-          
-          // For demonstration, we'll simulate the API response after a brief delay
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          return Math.floor(100000 + Math.random() * 900000).toString();
         } catch (error) {
           console.error('Error generating code:', error);
           throw error;
@@ -242,7 +240,7 @@
       }
       
       // Start checking verification status
-      function startVerificationCheck() {
+      function startVerificationCheck(name, password) {
         // Clear any existing interval
         if (verificationInterval) {
           clearInterval(verificationInterval);
@@ -251,7 +249,7 @@
         // Check verification status every 2 seconds
         verificationInterval = setInterval(async () => {
           try {
-            const isVerified = await checkVerificationStatus();
+            const isVerified = await checkVerificationStatus(name, password);
             
             if (isVerified) {
               // Stop checking
@@ -271,21 +269,21 @@
       }
       
       // Check verification status
-      async function checkVerificationStatus() {
+      async function checkVerificationStatus(name, password) {
         try {
-          // In a real application, you would call your backend API
-          /*
-          const response = await fetch('/api/auth/is-verified');
+          
+          const response = await fetch('http://localhost:8080/api/auth/is-verified', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, password }),
+          });
           if (!response.ok) {
             throw new Error('Failed to check verification status');
           }
           const data = await response.json();
           return data.verified;
-          */
-          
-          // For demonstration, simulate verification after a random number of checks
-          // This creates a 15% chance of verification on each check
-          return Math.random() < 0.15;
         } catch (error) {
           console.error('Error checking verification:', error);
           throw error;

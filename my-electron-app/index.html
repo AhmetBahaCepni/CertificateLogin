@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electron Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .loading {
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        
+        <!-- Step 1: Loading slots -->
+        <div id="step-loading" class="step active">
+            <div class="loading">Loading available slots...</div>
+        </div>
+        
+        <!-- Step 2: Select slot -->
+        <div id="step-slot" class="step">
+            <h3>Select HSM Slot</h3>
+            <select id="slotSelect">
+                <!-- Slots will be populated here -->
+            </select>
+            <button id="continueToPin">Continue</button>
+        </div>
+        
+        <!-- Step 3: Enter PIN -->
+        <div id="step-pin" class="step">
+            <h3>Enter PIN</h3>
+            <input type="password" id="userPin" placeholder="Enter your PIN" />
+            <button id="continueToCode">Continue</button>
+        </div>
+        
+        <!-- Step 4: Enter code -->
+        <div id="step-code" class="step">
+            <h3>Enter Verification Code</h3>
+            <input type="text" id="code" placeholder="Enter the code you received" />
+            <button id="signInButton">Verify</button>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Get elements
+        const stepLoading = document.getElementById('step-loading');
+        const stepSlot = document.getElementById('step-slot');
+        const stepPin = document.getElementById('step-pin');
+        const stepCode = document.getElementById('step-code');
+        const slotSelect = document.getElementById('slotSelect');
+        const continueToPin = document.getElementById('continueToPin');
+        const userPin = document.getElementById('userPin');
+        const continueToCode = document.getElementById('continueToCode');
+        const signInButton = document.getElementById('signInButton');
+        const messageDiv = document.getElementById('message');
+
+        // Show a specific step
+        function showStep(step) {
+            // Hide all steps
+            [stepLoading, stepSlot, stepPin, stepCode].forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show the specified step
+            step.classList.add('active');
+        }
+
+        // Display an error message
+        function showError(message) {
+            messageDiv.innerText = message;
+            messageDiv.style.color = 'red';
+        }
+
+        // Display a success message
+        function showSuccess(message) {
+            messageDiv.innerText = message;
+            messageDiv.style.color = 'green';
+        }
+
+        // When the page loads, get the slots
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Get available slots from the main process
+                const slots = await window.electronAPI.getSlots();
+                
+                // Populate the dropdown with slots
+                slots.forEach((slot, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = slot;
+                    slotSelect.appendChild(option);
+                });
+                
+                // Show the slot selection step
+                showStep(stepSlot);
+            } catch (error) {
+                showError('Failed to load HSM slots: ' + error.message);
+            }
+        });
+
+        // When the user selects a slot and clicks continue
+        continueToPin.addEventListener('click', () => {
+            showStep(stepPin);
+        });
+
+        // When the user enters a PIN and clicks continue
+        continueToCode.addEventListener('click', () => {
+            if (!userPin.value) {
+                showError('Please enter your PIN');
+                return;
+            }
+            
+            // Store the PIN for later use
+            window.selectedPin = userPin.value;
+            
+            // Move to code entry step
+            showStep(stepCode);
+        });
+
+        // When the user submits the form
+        signInButton.addEventListener('click', async () => {
+            const code = document.getElementById('code').value;
+            const selectedSlotIndex = parseInt(slotSelect.value);
+            const pin = window.selectedPin;
+
+            if (!code) {
+                showError('Please enter the verification code');
+                return;
+            }
+
+            try {
+                // Call the Electron API to sign in with selected slot, PIN and code
+                const response = await window.electronAPI.signIn({
+                    slotIndex: selectedSlotIndex,
+                    pin: pin,
+                    code: code
+                });
+                
+                showSuccess(response);
+            } catch (error) {
+                showError('An error occurred: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
